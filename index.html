@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arsonists Alliance Management</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Arsonists Management</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -99,10 +99,10 @@
     </style>
 </head>
 <body>
-    <img src="logo.png" alt="Arsonists Alliance Logo" class="logo">
-    <h1>Arsonists Alliance Management</h1>
+    <img src="logo.png" alt="Arsonists Logo" class="logo">
+    <h1>Arsonists Management</h1>
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'AllianceInfo')" id="defaultOpen">Alliance Info</button>
+        <button class="tablinks" onclick="openTab(event, 'AllianceInfo')" id="defaultOpen">Info</button>
         <button class="tablinks" onclick="openTab(event, 'EnemyTracker')">Enemy Tracker</button>
         <button class="tablinks" onclick="openTab(event, 'Transactions')">Transactions</button>
         <button class="tablinks" onclick="openTab(event, 'Members')">Members</button>
@@ -110,8 +110,8 @@
     </div>
     <div id="AllianceInfo" class="tabcontent">
         <div class="section">
-            <h2>Alliance Details</h2>
-            <p><strong>Alliance:</strong> Arsonists</p>
+            <h2>Details</h2>
+            <p><strong>Name:</strong> Arsonists</p>
             <p><strong>Leader:</strong> King Arson</p>
             <p><strong>Intel:</strong> Prince Arson</p>
             <p><strong>Warlord:</strong> EmberExecutioner</p>
@@ -120,10 +120,9 @@
     </div>
     <div id="EnemyTracker" class="tabcontent">
         <div class="section">
- накладка для багажника
             <h2>Add New Enemy</h2>
             <input type="text" id="enemyName" placeholder="Enemy Name">
-            <input type="text" id="enemyAlliance" placeholder="Enemy Alliance">
+            <input type="text" id="enemyAlliance" placeholder="Enemy Group">
             <select id="threatLevel">
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
@@ -137,7 +136,7 @@
             <thead>
                 <tr>
                     <th>Enemy Name</th>
-                    <th>Alliance</th>
+                    <th>Group</th>
                     <th>Threat Level</th>
                     <th>Last Encounter</th>
                     <th>Notes</th>
@@ -187,7 +186,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Role</th>
-                    <th Pipes>Contact Info</th>
+                    <th>Contact Info</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -247,7 +246,7 @@
                 clearEnemyForm();
                 saveData();
             } else {
-                alert('Please fill in Enemy Name and Alliance.');
+                alert('Please fill in Enemy Name and Group.');
             }
         }
         function deleteEnemy(index) {
