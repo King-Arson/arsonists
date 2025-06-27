@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsonists Alliance Management</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #b22222;
+            text-align: center;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+            height: auto;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            margin-bottom: 20px;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #b22222;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #b22222;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        input, select, textarea, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #8b1a1a;
+        }
+    </style>
+</head>
+<body>
+    <img src="logo.png" alt="Arsonists Alliance Logo" class="logo">
+    <h1>Arsonists Alliance Management</h1>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'AllianceInfo')" id="defaultOpen">Alliance Info</button>
+        <button class="tablinks" onclick="openTab(event, 'EnemyTracker')">Enemy Tracker</button>
+        <button class="tablinks" onclick="openTab(event, 'Transactions')">Transactions</button>
+        <button class="tablinks" onclick="openTab(event, 'Members')">Members</button>
+        <button class="tablinks" onclick="openTab(event, 'Communications')">Communications</button>
+    </div>
+    <div id="AllianceInfo" class="tabcontent">
+        <div class="section">
+            <h2>Alliance Details</h2>
+            <p><strong>Alliance:</strong> Arsonists</p>
+            <p><strong>Leader:</strong> King Arson</p>
+            <p><strong>Intel:</strong> Prince Arson</p>
+            <p><strong>Warlord:</strong> EmberExecutioner</p>
+            <p><strong>Diplomacy:</strong> FireSalamander1</p>
+        </div>
+    </div>
+    <div id="EnemyTracker" class="tabcontent">
+        <div class="section">
+ накладка для багажника
+            <h2>Add New Enemy</h2>
+            <input type="text" id="enemyName" placeholder="Enemy Name">
+            <input type="text" id="enemyAlliance" placeholder="Enemy Alliance">
+            <select id="threatLevel">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <input type="date" id="lastEncounter">
+            <input type="text" id="notes" placeholder="Notes">
+            <button onclick="addEnemy()">Add Enemy</button>
+        </div>
+        <table id="enemyTable">
+            <thead>
+                <tr>
+                    <th>Enemy Name</th>
+                    <th>Alliance</th>
+                    <th>Threat Level</th>
+                    <th>Last Encounter</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="enemyTableBody"></tbody>
+        </table>
+    </div>
+    <div id="Transactions" class="tabcontent">
+        <div class="section">
+            <h2>Add New Transaction</h2>
+            <input type="text" id="transDescription" placeholder="Description">
+            <input type="number" id="transAmount" placeholder="Amount">
+            <select id="transType">
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
+            <input type="date" id="transDate">
+            <input type="text" id="transParty" placeholder="Involved Party">
+            <button onclick="addTransaction()">Add Transaction</button>
+        </div>
+        <table id="transTable">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Involved Party</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="transTableBody"></tbody>
+        </table>
+    </div>
+    <div id="Members" class="tabcontent">
+        <div class="section">
+            <h2>Add New Member</h2>
+            <input type="text" id="memberName" placeholder="Member Name">
+            <input type="text" id="memberRole" placeholder="Role">
+            <input type="text" id="memberContact" placeholder="Contact Info">
+            <button onclick="addMember()">Add Member</button>
+        </div>
+        <table id="memberTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th Pipes>Contact Info</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="memberTableBody"></tbody>
+        </table>
+    </div>
+    <div id="Communications" class="tabcontent">
+        <div class="section">
+            <h2>Send Message</h2>
+            <input type="text" id="msgRecipient" placeholder="Recipient">
+            <textarea id="msgContent" placeholder="Message Content" rows="4" style="width: 100%;"></textarea>
+            <button onclick="addMessage()">Send Message</button>
+        </div>
+        <table id="msgTable">
+            <thead>
+                <tr>
+                    <th>Recipient</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="msgTableBody"></tbody>
+        </table>
+    </div>
+    <script>
+        let enemies = [];
+        let transactions = [];
+        let members = [
+            { name: 'King Arson', role: 'Leader', contact: 'kingarson@arsonists.com' },
+            { name: 'Prince Arson', role: 'Intel', contact: 'princearson@arsonists.com' },
+            { name: 'EmberExecutioner', role: 'Warlord', contact: 'ember@arsonists.com' },
+            { name: 'FireSalamander1', role: 'Diplomacy', contact: 'firesalamander@arsonists.com' }
+        ];
+        let messages = [];
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName('tabcontent');
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = 'none';
+            }
+            const tablinks = document.getElementsByClassName('tablinks');
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(' active', '');
+            }
+            document.getElementById(tabName).style.display = 'block';
+            evt.currentTarget.className += ' active';
+        }
+        function addEnemy() {
+            const name = document.getElementById('enemyName').value;
+            const alliance = document.getElementById('enemyAlliance').value;
+            const threatLevel = document.getElementById('threatLevel').value;
+            const lastEncounter = document.getElementById('lastEncounter').value;
+            const notes = document.getElementById('notes').value;
+            if (name && alliance) {
+                enemies.push({ name, alliance, threatLevel, lastEncounter, notes });
+                updateEnemyTable();
+                clearEnemyForm();
+                saveData();
+            } else {
+                alert('Please fill in Enemy Name and Alliance.');
+            }
+        }
+        function deleteEnemy(index) {
+            enemies.splice(index, 1);
+            updateEnemyTable();
+            saveData();
+        }
+        function updateEnemyTable() {
+            const tableBody = document.getElementById('enemyTableBody');
+            tableBody.innerHTML = '';
+            enemies.forEach((enemy, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${enemy.name}</td>
+                    <td>${enemy.alliance}</td>
+                    <td>${enemy.threatLevel}</td>
+                    <td>${enemy.lastEncounter || 'N/A'}</td>
+                    <td>${enemy.notes || 'N/A'}</td>
+                    <td><button onclick="deleteEnemy(${index})">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        function clearEnemyForm() {
+            document.getElementById('enemyName').value = '';
+            document.getElementById('enemyAlliance').value = '';
+            document.getElementById('threatLevel').value = 'Low';
+            document.getElementById('lastEncounter').value = '';
+            document.getElementById('notes').value = '';
+        }
+        function addTransaction() {
+            const description = document.getElementById('transDescription').value;
+            const amount = document.getElementById('transAmount').value;
+            const type = document.getElementById('transType').value;
+            const date = document.getElementById('transDate').value;
+            const party = document.getElementById('transParty').value;
+            if (description && amount && party) {
+                transactions.push({ description, amount, type, date, party });
+                updateTransTable();
+                clearTransForm();
+                saveData();
+            } else {
+                alert('Please fill in Description, Amount, and Involved Party.');
+            }
+        }
+        function deleteTransaction(index) {
+            transactions.splice(index, 1);
+            updateTransTable();
+            saveData();
+        }
+        function updateTransTable() {
+            const tableBody = document.getElementById('transTableBody');
+            tableBody.innerHTML = '';
+            transactions.forEach((trans, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${trans.description}</td>
+                    <td>${trans.amount}</td>
+                    <td>${trans.type}</td>
+                    <td>${trans.date || 'N/A'}</td>
+                    <td>${trans.party}</td>
+                    <td><button onclick="deleteTransaction(${index})">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        function clearTransForm() {
+            document.getElementById('transDescription').value = '';
+            document.getElementById('transAmount').value = '';
+            document.getElementById('transType').value = 'Income';
+            document.getElementById('transDate').value = '';
+            document.getElementById('transParty').value = '';
+        }
+        function addMember() {
+            const name = document.getElementById('memberName').value;
+            const role = document.getElementById('memberRole').value;
+            const contact = document.getElementById('memberContact').value;
+            if (name && role) {
+                members.push({ name, role, contact });
+                updateMemberTable();
+                clearMemberForm();
+                saveData();
+            } else {
+                alert('Please fill in Member Name and Role.');
+            }
+        }
+        function deleteMember(index) {
+            members.splice(index, 1);
+            updateMemberTable();
+            saveData();
+        }
+        function updateMemberTable() {
+            const tableBody = document.getElementById('memberTableBody');
+            tableBody.innerHTML = '';
+            members.forEach((member, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.name}</td>
+                    <td>${member.role}</td>
+                    <td>${member.contact || 'N/A'}</td>
+                    <td><button onclick="deleteMember(${index})">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        function clearMemberForm() {
+            document.getElementById('memberName').value = '';
+            document.getElementById('memberRole').value = '';
+            document.getElementById('memberContact').value = '';
+        }
+        function addMessage() {
+            const recipient = document.getElementById('msgRecipient').value;
+            const content = document.getElementById('msgContent').value;
+            const date = new Date().toISOString().split('T')[0];
+            if (recipient && content) {
+                messages.push({ recipient, content, date });
+                updateMsgTable();
+                clearMsgForm();
+                saveData();
+            } else {
+                alert('Please fill in Recipient and Message Content.');
+            }
+        }
+        function deleteMessage(index) {
+            messages.splice(index, 1);
+            updateMsgTable();
+            saveData();
+        }
+        function updateMsgTable() {
+            const tableBody = document.getElementById('msgTableBody');
+            tableBody.innerHTML = '';
+            messages.forEach((msg, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${msg.recipient}</td>
+                    <td>${msg.content}</td>
+                    <td>${msg.date}</td>
+                    <td><button onclick="deleteMessage(${index})">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        function clearMsgForm() {
+            document.getElementById('msgRecipient').value = '';
+            document.getElementById('msgContent').value = '';
+        }
+        function saveData() {
+            localStorage.setItem('arsonistsEnemies', JSON.stringify(enemies));
+            localStorage.setItem('arsonistsTransactions', JSON.stringify(transactions));
+            localStorage.setItem('arsonistsMembers', JSON.stringify(members));
+            localStorage.setItem('arsonistsMessages', JSON.stringify(messages));
+        }
+        window.onload = function() {
+            const savedEnemies = localStorage.getItem('arsonistsEnemies');
+            const savedTransactions = localStorage.getItem('arsonistsTransactions');
+            const savedMembers = localStorage.getItem('arsonistsMembers');
+            const savedMessages = localStorage.getItem('arsonistsMessages');
+            if (savedEnemies) enemies = JSON.parse(savedEnemies);
+            if (savedTransactions) transactions = JSON.parse(savedTransactions);
+            if (savedMembers) members = JSON.parse(savedMembers);
+            if (savedMessages) messages = JSON.parse(savedMessages);
+            updateEnemyTable();
+            updateTransTable();
+            updateMemberTable();
+            updateMsgTable();
+            document.getElementById('defaultOpen').click();
+        };
+    </script>
+</body>
+</html>
